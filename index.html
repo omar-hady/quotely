@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotely - Inspiration Daily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-left"></div>
+    <div class="background-orb orb-right"></div>
+    <div class="grain-overlay"></div>
+
+    <div class="page-shell">
+      <header class="navbar glass-panel">
+        <div class="brand">
+          <span class="brand-icon">✦</span>
+          <span class="brand-text">Quotely</span>
+        </div>
+
+        <nav class="menu" aria-label="Primary">
+          <button class="menu-item is-active" data-view="home">Home</button>
+          <button class="menu-item" data-view="explore">Explore</button>
+          <button class="menu-item" data-view="profile">Saved</button>
+          <button class="menu-item" data-view="detail">Generate</button>
+        </nav>
+
+        <button class="btn btn-primary" id="get-started-button">Get Started</button>
+      </header>
+
+      <main>
+        <section class="view is-visible" id="view-home">
+          <section class="hero">
+            <span class="eyebrow glass-chip">✧ Discover Daily Inspiration</span>
+            <h1 class="hero-title">Find Your Daily <span>Inspiration</span></h1>
+            <p class="hero-subtitle">
+              Discover thousands of inspirational quotes from the world's greatest minds.
+              Save, share, and reflect on wisdom that resonates with you.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-view-target="explore">Explore Quotes</button>
+              <button class="btn btn-secondary" id="open-auth-from-hero">Add Your Quote</button>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Featured Quotes</h2>
+            <div class="quotes-grid" id="home-featured-grid"></div>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="categories-grid" id="categories-grid"></div>
+          </section>
+
+          <section class="cta glass-card">
+            <div class="top-border-line"></div>
+            <p class="cta-icon">☆</p>
+            <h3>Ready to Get Inspired?</h3>
+            <p>Join thousands of users finding daily motivation and wisdom</p>
+            <button class="btn btn-primary" data-view-target="explore">Start Exploring</button>
+          </section>
+        </section>
+
+        <section class="view" id="view-explore">
+          <section class="section-head">
+            <h1>Explore Quotes</h1>
+            <p>Discover wisdom from the world's greatest minds</p>
+          </section>
+
+          <div class="explore-tools">
+            <button class="btn btn-secondary" id="random-quote-button">Random Quote</button>
+            <select id="author-filter" class="author-select glass-chip">
+              <option value="All">All Authors</option>
+            </select>
+          </div>
+
+          <div class="search-box glass-card">
+            <input type="text" id="search-input" placeholder="Search quotes or authors..." />
+          </div>
+
+          <div class="filters" id="filters-row"></div>
+          <p class="result-count" id="result-count">Showing 0 quotes</p>
+          <div class="quotes-grid" id="explore-grid"></div>
+          <div class="load-more-wrap">
+            <button class="btn btn-primary" id="load-more-button">Load More</button>
+          </div>
+        </section>
+
+        <section class="view" id="view-detail">
+          <button class="back-link" data-view-target="explore">← Back</button>
+          <article class="detail-card glass-card" id="detail-card"></article>
+        </section>
+
+        <section class="view" id="view-profile">
+          <article class="profile-card glass-card">
+            <div class="top-border-line"></div>
+            <div class="profile-main">
+              <div class="avatar-wrap">
+                <div class="avatar">◉</div>
+                <span class="badge">◌</span>
+              </div>
+              <div>
+                <h2>Alex Johnson</h2>
+                <p class="muted">@alexj</p>
+                <p>Lover of wisdom and inspiration. Sharing quotes that move me.</p>
+                <p class="muted">Joined March 2024</p>
+              </div>
+            </div>
+            <div class="stats-row">
+              <div><strong>12</strong><span>Submitted</span></div>
+              <div><strong>47</strong><span>Saved</span></div>
+              <div><strong>156</strong><span>Liked</span></div>
+            </div>
+          </article>
+
+          <div class="profile-tabs" id="profile-tabs"></div>
+          <div class="quotes-grid" id="profile-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="auth-modal">
+      <div class="modal-panel glass-card">
+        <button class="close-modal" id="close-auth-modal">×</button>
+        <div class="modal-logo">✦</div>
+        <h3>Join Quotely to Share Your Inspiration</h3>
+        <p>Create an account or log in to submit your own quotes.</p>
+        <div class="auth-switch">
+          <button class="auth-tab is-active">Sign Up</button>
+          <button class="auth-tab">Log In</button>
+        </div>
+        <form class="auth-form">
+          <label>
+            Full Name
+            <input type="text" placeholder="Enter your name" />
+          </label>
+          <label>
+            Email Address
+            <input type="email" placeholder="you@example.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" placeholder="••••••••" />
+          </label>
+          <button type="button" class="btn btn-primary wide">Create Account</button>
+        </form>
+        <button class="link-button" id="continue-without-auth">
+          Continue exploring quotes without an account
+        </button>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
+  
