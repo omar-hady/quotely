@@ -1,0 +1,488 @@
+/* =========================================================
+   Quotely – Main Stylesheet
+   ========================================================= */
+
+/* --- Reset & Base ---------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-bg:          #f7f3ee;
+    --color-surface:     #ffffff;
+    --color-primary:     #6c47ff;
+    --color-primary-dk:  #5535dd;
+    --color-accent:      #ff4d6d;
+    --color-text:        #1a1a2e;
+    --color-muted:       #6b7280;
+    --color-border:      #e2d9f3;
+    --color-like:        #ff4d6d;
+    --color-like-bg:     #fff0f3;
+    --radius:            0.75rem;
+    --shadow:            0 4px 24px rgba(108, 71, 255, 0.08);
+    --shadow-card:       0 8px 40px rgba(108, 71, 255, 0.13);
+    --font-sans:         'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-serif:        Georgia, 'Times New Roman', serif;
+    --transition:        0.2s ease;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--color-primary-dk);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Buttons --------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    transition: background var(--transition), color var(--transition),
+                box-shadow var(--transition), transform var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dk);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: var(--color-border);
+    color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background: #ddd4f5;
+    color: var(--color-primary-dk);
+    text-decoration: none;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-sm {
+    font-size: 0.8125rem;
+    padding: 0.4rem 0.9rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Like button */
+.btn-like {
+    background: var(--color-like-bg);
+    color: var(--color-muted);
+    border: 2px solid transparent;
+    font-size: 1rem;
+    padding: 0.55rem 1.1rem;
+}
+
+.btn-like:hover {
+    border-color: var(--color-like);
+    color: var(--color-like);
+    text-decoration: none;
+}
+
+.btn-like.liked {
+    background: var(--color-like);
+    color: #fff;
+    border-color: var(--color-like);
+}
+
+.btn-like .like-icon {
+    font-size: 1.1em;
+}
+
+/* Share button */
+.btn-share {
+    background: #e8f4fd;
+    color: #1a73e8;
+    border: 2px solid transparent;
+}
+
+.btn-share:hover {
+    background: #1a73e8;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Next button */
+.btn-next {
+    background: var(--color-primary);
+    color: #fff;
+    margin-left: auto;
+}
+
+.btn-next:hover {
+    background: var(--color-primary-dk);
+}
+
+/* --- Site Header ----------------------------------------- */
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(108, 71, 255, 0.06);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--color-primary-dk);
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-user {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-right: 0.25rem;
+}
+
+.inline-form {
+    display: inline;
+}
+
+/* --- Main Content ---------------------------------------- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+/* --- Quote Card ------------------------------------------ */
+.quote-card {
+    background: var(--color-surface);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-card);
+    padding: 3rem 3.5rem;
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+    transition: box-shadow var(--transition);
+    position: relative;
+}
+
+.quote-card::before {
+    content: '"';
+    position: absolute;
+    top: -0.1rem;
+    left: 1.5rem;
+    font-size: 8rem;
+    font-family: var(--font-serif);
+    color: var(--color-border);
+    line-height: 1;
+    user-select: none;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-author {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+}
+
+.quote-submitted {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+}
+
+.quote-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Empty state */
+.empty-state {
+    color: var(--color-muted);
+    font-size: 1.1rem;
+}
+
+/* --- Toast ---------------------------------------------- */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem);
+    background: #1a1a2e;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.9375rem;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* --- Auth Pages ----------------------------------------- */
+.auth-page {
+    justify-content: center;
+    background: linear-gradient(135deg, #f0ebff 0%, #f7f3ee 100%);
+}
+
+.auth-card {
+    background: var(--color-surface);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-card);
+    padding: 2.5rem 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    margin: 2rem auto;
+}
+
+.add-quote-card {
+    max-width: 540px;
+}
+
+.logo-center {
+    display: block;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* --- Forms ----------------------------------------------- */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.4rem;
+}
+
+.required {
+    color: var(--color-like);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 0.6rem;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: var(--color-text);
+    background: #fff;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(108, 71, 255, 0.12);
+}
+
+.form-input::placeholder {
+    color: #b0b8c4;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.char-hint {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+}
+
+.form-errors {
+    background: #fff0f3;
+    border: 1.5px solid #ffc2d1;
+    border-radius: 0.6rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    color: #b91c4c;
+    font-size: 0.875rem;
+}
+
+.form-errors li + li {
+    margin-top: 0.3rem;
+}
+
+.form-errors li::before {
+    content: '• ';
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+/* --- Footer --------------------------------------------- */
+.site-footer {
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+/* --- Loading spinner ------------------------------------ */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+}
+
+/* --- Responsive ------------------------------------------ */
+@media (max-width: 600px) {
+    .site-header {
+        padding: 0 1rem;
+    }
+
+    .quote-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .quote-card::before {
+        font-size: 5rem;
+    }
+
+    .auth-card {
+        padding: 2rem 1.25rem;
+        margin: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-next {
+        margin-left: 0;
+    }
+}
